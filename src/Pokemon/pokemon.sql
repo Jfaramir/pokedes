@@ -18,12 +18,13 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Base de datos: `test`
 --
-
+create database `pokemon`;
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `pokemon`
 --
+use `pokemon`;
 
 CREATE TABLE IF NOT EXISTS `pokemon` (
   `id` varchar(30) COLLATE utf8_bin NOT NULL,
@@ -62,6 +63,9 @@ INSERT INTO `pokemon` (`id`, `name`, `forme_name`, `forme_base_pokemon_id`, `gen
 ('4', 'Charmander', '', '', '1', '2', '', '', '', '6', '85', 'Lizard', 'red', '6', 'mountain', '1', '45', '65', '70', '176', '0', '0', '0'),
 ('5', 'Charmeleon', '', '', '1', '2', '4', '1', '16', '11', '190', 'Flame', 'red', '6', 'mountain', '1', '45', '142', '70', '178', '0', '0', '0'),
 ('6', 'Charizard', '', '', '1', '2', '5', '1', '36', '17', '905', 'Flame', 'red', '6', 'mountain', '1', '45', '209', '70', '180', '0', '0', '0'),
+('7', 'Squirtle', '', '', '1', '2', '5', '1', '36', '17', '905', 'Water', 'blue', '6', 'river', '1', '45', '209', '70', '180', '0', '0', '0'),
+('8', 'Wartlotle', '', '', '1', '2', '5', '1', '36', '17', '905', 'Water', 'blue', '6', 'river', '1', '45', '209', '70', '180', '0', '0', '0'),
+('9', 'Blastoise', '', '', '1', '2', '5', '1', '36', '17', '905', 'Water', 'blue', '6', 'river', '1', '45', '209', '70', '180', '0', '0', '0'),
 ('10', 'Caterpie', '', '', '1', '4', '', '', '', '3', '29', 'Worm', 'green', '2', 'forest', '4', '255', '53', '70', '123', '0', '0', '0'),
 ('11', 'Metapod', '', '', '1', '4', '10', '1', '7', '7', '99', 'Cocoon', 'green', '2', 'forest', '4', '120', '72', '70', '124', '0', '0', '0'),
 ('12', 'Butterfree', '', '', '1', '4', '11', '1', '10', '11', '320', 'Butterfly', 'white', '13', 'forest', '4', '45', '160', '70', '125', '0', '1', '1'),
