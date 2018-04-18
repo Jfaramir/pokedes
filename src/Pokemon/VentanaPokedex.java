@@ -64,7 +64,7 @@ public class VentanaPokedex extends javax.swing.JFrame {
             jLabel4.setText("Tipo: " + p.tipo);
             jLabel5.setText("Peso: " + p.peso);
             jLabel6.setText("Generacion: " + p.generation_id);
-            jLabel7.setText("Evolucion: " + p.evolution_chain_id);
+            jLabel7.setText("Evolucion_Id: " + p.evolution_chain_id);
             jLabel8.setText("Altura: " + p.altura);
             jLabel9.setText("Habitat: " + p.habitat);
         }
@@ -90,8 +90,10 @@ public class VentanaPokedex extends javax.swing.JFrame {
             while (resultadoConsulta.next()){
                 Pokemon p = new Pokemon();
                 p.nombre = resultadoConsulta.getString(2);
+                p.id = resultadoConsulta.getString(1);
                 p.generation_id = resultadoConsulta.getInt(5);
                 p.evolution_chain_id = resultadoConsulta.getInt(6);
+                p.parent_Id = resultadoConsulta.getInt(7);
                 p.species = resultadoConsulta.getString(12);
                 p.peso = resultadoConsulta.getString(11);
                 p.tipo = resultadoConsulta.getString(12);
@@ -102,10 +104,14 @@ public class VentanaPokedex extends javax.swing.JFrame {
         }
         catch (Exception e){
         }
+        Pokemon p = new Pokemon();
         total_pokemons = listaPokemons.size();
         //////////////////////////////////////////////
         jLabel2.setIcon(devuelveElPokemonQueEstaEnLaPosicion(0));
-        jLabel10.setIcon(devuelveLaEvolucion(1));
+        if(p.evolution_chain_id == p.parent_Id ){
+            jLabel10.setIcon(devuelveLaEvolucion(1));
+        }
+        
         escribeDatos();
     }
 
@@ -177,19 +183,26 @@ public class VentanaPokedex extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MousePressed
+        Pokemon p = new Pokemon();
         contador--;
         if (contador < 0) {contador = 0;}
         //dibujaElPokemonQueEstaEnLaPosicion(contador);
         jLabel2.setIcon(devuelveElPokemonQueEstaEnLaPosicion(contador));
-        jLabel10.setIcon(devuelveLaEvolucion(contador +1 ));
+        if(p.evolution_chain_id == p.parent_Id ){
+            jLabel10.setIcon(devuelveLaEvolucion(contador +1 ));
+        }
+        
         escribeDatos();
     }//GEN-LAST:event_jButton1MousePressed
 
     private void jButton2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MousePressed
+        Pokemon p = new Pokemon();
         contador++;
         if (contador > total_pokemons) {contador = 0;}
         jLabel2.setIcon(devuelveElPokemonQueEstaEnLaPosicion(contador));
-        jLabel10.setIcon(devuelveLaEvolucion(contador + 1));
+        if(p.evolution_chain_id == p.parent_Id ){
+            jLabel10.setIcon(devuelveLaEvolucion(contador +1 ));
+        }
         escribeDatos();
     }//GEN-LAST:event_jButton2MousePressed
 
