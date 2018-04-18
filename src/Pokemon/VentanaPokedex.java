@@ -27,6 +27,7 @@ public class VentanaPokedex extends javax.swing.JFrame {
     BufferedImage plantilla = null;
     private int contador = 0;
     private int ancho = 200, alto = 200;
+    private int ancho2 = 100, alto2 = 100;
     int total_pokemons = 0;
     // conectamos a la base de datos
 
@@ -47,6 +48,13 @@ public class VentanaPokedex extends javax.swing.JFrame {
         int fila = posicion % 31;
         return ( new ImageIcon(plantilla.getSubimage(fila*96, columna*96, 96, 96)
                 .getScaledInstance(ancho, alto, Image.SCALE_DEFAULT))); 
+    }
+    private ImageIcon devuelveLaEvolucion (int posicion){
+        int columna = posicion / 31;
+        int fila = posicion % 31;
+        
+        return ( new ImageIcon(plantilla.getSubimage(fila*96, columna*96, 96, 96)
+                .getScaledInstance(ancho2, alto2, Image.SCALE_DEFAULT))); 
     }
     
     private void escribeDatos(){
@@ -97,6 +105,7 @@ public class VentanaPokedex extends javax.swing.JFrame {
         total_pokemons = listaPokemons.size();
         //////////////////////////////////////////////
         jLabel2.setIcon(devuelveElPokemonQueEstaEnLaPosicion(0));
+        jLabel10.setIcon(devuelveLaEvolucion(1));
         escribeDatos();
     }
 
@@ -119,6 +128,7 @@ public class VentanaPokedex extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -143,13 +153,22 @@ public class VentanaPokedex extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, 110, 50));
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 230, 240));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 230, 220));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, 110, 30));
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 110, 30));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 200, 110, 30));
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 460, 90, 50));
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 460, 90, 50));
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, 110, 30));
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 110, 30));
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, 110, 30));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 260, 110, 30));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 40, 120, 100));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Pokemon/pokedes hacte con todas.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 560));
@@ -161,7 +180,8 @@ public class VentanaPokedex extends javax.swing.JFrame {
         contador--;
         if (contador < 0) {contador = 0;}
         //dibujaElPokemonQueEstaEnLaPosicion(contador);
-        jLabel2.setIcon(devuelveElPokemonQueEstaEnLaPosicion(contador)); 
+        jLabel2.setIcon(devuelveElPokemonQueEstaEnLaPosicion(contador));
+        jLabel10.setIcon(devuelveLaEvolucion(contador +1 ));
         escribeDatos();
     }//GEN-LAST:event_jButton1MousePressed
 
@@ -169,6 +189,7 @@ public class VentanaPokedex extends javax.swing.JFrame {
         contador++;
         if (contador > total_pokemons) {contador = 0;}
         jLabel2.setIcon(devuelveElPokemonQueEstaEnLaPosicion(contador));
+        jLabel10.setIcon(devuelveLaEvolucion(contador + 1));
         escribeDatos();
     }//GEN-LAST:event_jButton2MousePressed
 
@@ -211,6 +232,7 @@ public class VentanaPokedex extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
